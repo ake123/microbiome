@@ -181,7 +181,13 @@ transform <- function(x, transform = "identity", target = "OTU",
         
     } else if (transform == "scale") {
         
-        xt <- scale * x 
+        xt <- scale * x
+
+    } else if (transform == "rclr") {
+	
+	xt <- decostand(x, method = "rclr", MARGIN = 2)
+	dimnames(xt) <- dimnames(x)
+	
         
     } else {
         
